@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon Fiduciary Group — Securing your future, beyond the horizon.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101B2D;
+    --ink-soft:#1C2C45;
+    --parchment:#F3EEE2;
+    --paper:#FBF9F4;
+    --brass:#A9823D;
+    --brass-deep:#8A6A2E;
+    --teal:#1F3D3D;
+    --slate:#55606E;
+    --slate-light:#8993A0;
+    --line:#DDD5C2;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:16px;
+  }
+  h1,h2,h3,h4{
+    font-family:'Spectral', serif;
+    margin:0;
+    font-weight:600;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  ::selection{background:var(--brass); color:var(--white);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,27,45,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(169,130,61,0.25);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:1080px; margin:0 auto;
+  }
+  .nav-brand{
+    font-family:'Spectral', serif;
+    font-size:1.15rem;
+    color:var(--paper);
+    letter-spacing:0.01em;
+  }
+  .nav-brand span{color:var(--brass);}
+  .nav-links{
+    display:flex; gap:28px;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    color:#CBD3DE;
+    text-decoration:none;
+    font-size:0.94rem;
+  }
+  .nav-links a:hover{color:var(--white);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:720px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--ink); flex-direction:column; gap:0;
+      max-height:0; overflow:hidden; transition:max-height 0.3s ease;
+      padding:0 32px;
+    }
+    .nav-links.open{max-height:300px; padding:12px 32px 20px;}
+    .nav-links a{display:block; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.08);}
+    .nav-toggle{
+      display:block; background:none; border:1px solid rgba(255,255,255,0.3);
+      color:var(--paper); font-size:0.85rem; padding:6px 12px; border-radius:3px;
+      cursor:pointer; font-family:'IBM Plex Sans', sans-serif;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    color:var(--paper);
+    padding:96px 32px 0;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1080px; margin:0 auto;
+    text-align:center;
+  }
+  .hero-kicker{
+    color:var(--brass);
+    font-size:0.98rem;
+    margin-bottom:18px;
+    font-family:'Spectral', serif;
+    font-style:italic;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.18;
+    color:var(--paper);
+    max-width:820px;
+    margin:0 auto;
+  }
+  .hero p.lede{
+    max-width:560px;
+    margin:26px auto 0;
+    color:#B9C2CE;
+    font-size:1.05rem;
+  }
+  .hero-ctas{
+    display:flex; gap:16px; justify-content:center;
+    margin:38px 0 0;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:13px 28px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:0.95rem;
+    font-weight:500;
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-primary{
+    background:var(--brass);
+    color:var(--ink);
+  }
+  .btn-primary:hover{background:#c2954c;}
+  .btn-ghost{
+    border:1px solid rgba(255,255,255,0.35);
+    color:var(--paper);
+  }
+  .btn-ghost:hover{border-color:var(--white); background:rgba(255,255,255,0.06);}
+
+  /* horizon graphic */
+  .horizon-graphic{
+    margin-top:64px;
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .sun{
+    animation:rise 1.6s ease-out forwards;
+    transform-origin:center;
+  }
+  .horizon-line{
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 1.8s ease-out forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes rise{
+    from{ transform:translateY(30px); opacity:0; }
+    to{ transform:translateY(0); opacity:1; }
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:620px;
+    margin:0 0 48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.1rem);
+    line-height:1.25;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--slate);
+    font-size:1.02rem;
+  }
+  .band-parchment{background:var(--parchment);}
+  .band-paper{background:var(--paper);}
+  .band-ink{background:var(--ink); color:var(--paper);}
+
+  /* ---------- MEMBERSHIP CARDS ---------- */
+  .plan-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:720px){ .plan-grid{grid-template-columns:1fr;} }
+  .plan-card{
+    background:var(--paper);
+    padding:40px 36px;
+  }
+  .plan-card .amount{
+    font-family:'Spectral', serif;
+    font-size:2.6rem;
+    color:var(--ink);
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+  }
+  .plan-card .amount small{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.95rem;
+    color:var(--slate);
+    font-weight:400;
+  }
+  .plan-card h3{
+    font-size:1.1rem;
+    margin-top:6px;
+    color:var(--brass-deep);
+  }
+  .plan-card p{
+    margin-top:14px;
+    color:var(--slate);
+    font-size:0.96rem;
+  }
+  .plan-note{
+    max-width:1080px;
+    margin:0 auto;
+    padding:20px 32px 0;
+    color:var(--slate);
+    font-size:0.92rem;
+    border-top:none;
+  }
+
+  /* ---------- TIMELINE (services & benefits) ---------- */
+  .timeline{
+    position:relative;
+    padding-left:0;
+    margin-top:8px;
+  }
+  .t-track{
+    position:relative;
+    height:3px;
+    background:var(--line);
+    margin:0 0 46px;
+    border-radius:2px;
+  }
+  .t-track .t-fill{
+    position:absolute; left:0; top:0; bottom:0;
+    width:100%;
+    background:var(--brass);
+    border-radius:2px;
+  }
+  .t-points{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  @media (max-width:720px){ .t-points{grid-template-columns:1fr;} }
+  .t-point{position:relative;}
+  .t-point::before{
+    content:"";
+    position:absolute;
+    top:-58px; left:0;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--ink);
+    border:3px solid var(--brass);
+  }
+  .t-point .t-time{
+    font-family:'Spectral', serif;
+    font-style:italic;
+    color:var(--brass-deep);
+    font-size:1rem;
+    margin-bottom:8px;
+    display:block;
+  }
+  .t-point h4{font-size:1.08rem; margin-bottom:8px;}
+  .t-point p{color:var(--slate); font-size:0.95rem;}
+
+  .extra-box{
+    margin-top:56px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .extra-head{
+    padding:22px 30px;
+    border-bottom:1px solid var(--line);
+  }
+  .extra-head h3{font-size:1.15rem;}
+  .extra-head p{color:var(--slate); margin-top:6px; font-size:0.94rem;}
+  .extra-cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  @media (max-width:720px){ .extra-cols{grid-template-columns:1fr;} }
+  .extra-col{
+    padding:26px 30px;
+  }
+  .extra-col + .extra-col{border-left:1px solid var(--line);}
+  @media (max-width:720px){ .extra-col + .extra-col{border-left:none; border-top:1px solid var(--line);} }
+  .extra-col .tag{
+    font-family:'Spectral', serif;
+    font-style:italic;
+    color:var(--slate);
+    font-size:0.92rem;
+  }
+  .extra-col .rate{
+    font-family:'Spectral', serif;
+    font-size:2rem;
+    margin-top:6px;
+    color:var(--ink);
+  }
+  .extra-col.warn .rate{color:var(--brass-deep);}
+  .extra-col p.desc{color:var(--slate); font-size:0.92rem; margin-top:8px;}
+
+  /* ---------- RESPONSIBILITIES / CONFIDENTIALITY ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  @media (max-width:720px){ .two-col{grid-template-columns:1fr; gap:40px;} }
+  .list-plain{
+    list-style:none; margin:18px 0 0; padding:0;
+  }
+  .list-plain li{
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    gap:14px;
+    font-size:0.97rem;
+    color:var(--ink);
+  }
+  .list-plain li:first-child{padding-top:0;}
+  .list-plain li::before{
+    content:"";
+    flex:0 0 6px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--brass);
+    margin-top:9px;
+  }
+  .col-title{
+    font-size:1.2rem;
+  }
+  .col-title-sub{color:var(--slate); font-size:0.92rem; margin-top:8px;}
+
+  /* ---------- FEES RECAP ---------- */
+  .fee-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+  }
+  .fee-table th, .fee-table td{
+    text-align:left;
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .fee-table th{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    color:var(--slate);
+    font-size:0.88rem;
+    border-bottom:1px solid var(--ink);
+  }
+  .fee-table td.amt{font-family:'Spectral', serif; font-size:1.1rem;}
+
+  /* ---------- TERMS ACCORDION ---------- */
+  .terms-list{
+    border-top:1px solid var(--line);
+  }
+  .term-item{
+    border-bottom:1px solid var(--line);
+  }
+  .term-item summary{
+    list-style:none;
+    cursor:pointer;
+    padding:24px 4px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+  }
+  .term-item summary::-webkit-details-marker{display:none;}
+  .term-item summary h3{
+    font-size:1.08rem;
+    font-weight:600;
+  }
+  .term-item summary .plus{
+    font-family:'Spectral', serif;
+    font-size:1.4rem;
+    color:var(--brass-deep);
+    transition:transform 0.25s ease;
+    flex:0 0 auto;
+  }
+  .term-item[open] summary .plus{transform:rotate(45deg);}
+  .term-body{
+    padding:0 4px 28px;
+    color:var(--slate);
+    max-width:720px;
+  }
+  .term-body ul{margin:10px 0 0; padding-left:20px;}
+  .term-body li{margin-bottom:8px; font-size:0.96rem;}
+  .term-body p{font-size:0.96rem; margin-top:8px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:#AEB8C4;
+    padding:64px 0 36px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    flex-wrap:wrap;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand h3{
+    color:var(--paper);
+    font-size:1.3rem;
+  }
+  .footer-brand p{
+    margin-top:10px;
+    font-style:italic;
+    font-family:'Spectral', serif;
+    color:var(--brass);
+    max-width:320px;
+  }
+  .footer-cols{
+    display:flex; gap:64px; flex-wrap:wrap;
+  }
+  .footer-col h4{
+    color:var(--paper);
+    font-size:0.92rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .footer-col p, .footer-col a{
+    display:block;
+    font-size:0.9rem;
+    color:#AEB8C4;
+    text-decoration:none;
+    margin-bottom:8px;
+  }
+  .footer-col a:hover{color:var(--white);}
+  .footer-bottom{
+    display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+    padding-top:28px;
+    font-size:0.85rem;
+    color:#7C8798;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Horizon <span>Fiduciary</span> Group</div>
+    <button class="nav-toggle" id="navToggle">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#responsibilities">Responsibilities</a></li>
+      <li><a href="#terms">Full Terms</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Fiduciary, trust &amp; wealth management</div>
+    <h1>Securing your future, beyond the horizon.</h1>
+    <p class="lede">Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to registered members, under the membership and withdrawal rules set out below.</p>
+    <div class="hero-ctas">
+      <a href="#about" class="btn btn-primary">Learn more</a>
+      <a href="#terms" class="btn btn-ghost">Read the full terms</a>
+    </div>
+  </div>
+  <svg class="horizon-graphic" viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <circle class="sun" cx="540" cy="150" r="46" fill="#A9823D" opacity="0.9"/>
+    <line class="horizon-line" x1="0" y1="150" x2="1080" y2="150" stroke="#B9C2CE" stroke-width="1.5" opacity="0.6"/>
+  </svg>
+</section>
+
+<section class="band-paper" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About the group</h2>
+      <p>Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to its registered members, under written terms set out in full below.</p>
+    </div>
+    <ul class="list-plain">
+      <li>Membership is individual — registered per person, and not transferable to anyone else.</li>
+      <li>Member data is kept confidential, and shared only where the law requires it.</li>
+      <li>Terms are set out in writing, and members are notified through official channels before any change takes effect.</li>
+      <li>Governed by the laws of India, with disputes resolved in Gurugram courts.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band-paper" id="responsibilities">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <h3 class="col-title">Member responsibilities</h3>
+        <p class="col-title-sub">What we ask of every member.</p>
+        <ul class="list-plain">
+          <li>Provide accurate and complete information at registration.</li>
+          <li>Pay your monthly membership fee on time.</li>
+          <li>Comply with all applicable laws and regulations.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col-title">Confidentiality</h3>
+        <p class="col-title-sub">How we handle your information.</p>
+        <ul class="list-plain">
+          <li>Your member data is kept confidential.</li>
+          <li>Information is shared only where disclosure is required by law.</li>
+          <li>Late payments may result in a pause on membership benefits until resolved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band-paper" id="terms">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Terms &amp; conditions</h2>
+      <p>The full legal terms governing membership with Horizon Fiduciary Group. Select any section to read it in detail.</p>
+    </div>
+
+    <div class="terms-list">
+
+      <details class="term-item" open>
+        <summary><h3>1. Introduction</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <p>By joining Horizon Fiduciary Group ("Company"), members agree to the following terms and conditions. These govern membership, services, benefits, and obligations.</p>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>2. Membership &amp; registration</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>Registration fee: ₹100 per person (one-time, non-refundable).</li>
+            <li>Monthly membership plan: ₹500 per person, payable in advance.</li>
+            <li>Membership is non-transferable and valid only for the registered individual.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>3. Services &amp; member benefits</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>Members gain access to fiduciary, trust, and wealth management services.</li>
+            <li>Benefits become available after 1 year of continuous membership.</li>
+            <li>Standard withdrawal: members may withdraw up to 50% of their assets after 1 year.</li>
+            <li>Emergency withdrawal: members may withdraw up to 100% of their assets in case of genuine emergencies.</li>
+            <li>Extra withdrawal: members may withdraw more than their available assets, subject to interest charges — no interest in the first month, and a minimum 5% interest on the extra amount after 1 month.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>4. Member responsibilities</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>Provide accurate and complete information during registration.</li>
+            <li>Ensure timely payment of monthly membership fees.</li>
+            <li>Comply with all applicable laws and regulations.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>5. Confidentiality</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <p>Member data will remain confidential except where disclosure is required by law.</p>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>6. Fees &amp; payments</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>Registration fee: ₹100 (one-time, non-refundable).</li>
+            <li>Monthly membership plan: ₹500, payable in advance each month.</li>
+            <li>Late payments may result in suspension of membership benefits.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>7. Limitation of liability</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <p>The Company is not liable for losses due to market risks, regulatory changes, or member misrepresentation.</p>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>8. Termination</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>Membership may be terminated by either party with 30 days' written notice.</li>
+            <li>Outstanding fees and obligations must be settled before termination.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>9. Governing law</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <ul>
+            <li>These terms are governed by the laws of India.</li>
+            <li>Disputes will be resolved in Gurugram courts.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="term-item">
+        <summary><h3>10. Amendments</h3><span class="plus">+</span></summary>
+        <div class="term-body">
+          <p>The Company reserves the right to amend these terms at any time. Members will be notified of changes through official communication channels.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Horizon Fiduciary Group</h3>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <a href="#about">About</a>
+          <a href="#responsibilities">Responsibilities</a>
+          <a href="#terms">Full terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Horizon Fiduciary Group. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
+</body>
+</html>

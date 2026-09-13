@@ -6,7 +6,7 @@
 <title>Horizon Fiduciary Group — Securing your future, beyond the horizon.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#101B2D;
@@ -26,14 +26,14 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    font-family:'IBM Plex Sans', sans-serif;
+    font-family:'IBM Plex Sans', 'Noto Sans Devanagari', sans-serif;
     color:var(--ink);
     background:var(--paper);
     line-height:1.6;
     font-size:16px;
   }
   h1,h2,h3,h4{
-    font-family:'Spectral', serif;
+    font-family:'Spectral', 'Noto Sans Devanagari', serif;
     margin:0;
     font-weight:600;
     color:var(--ink);
@@ -63,14 +63,21 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 32px;
     max-width:1080px; margin:0 auto;
+    gap:16px;
   }
   .nav-brand{
     font-family:'Spectral', serif;
     font-size:1.15rem;
     color:var(--paper);
     letter-spacing:0.01em;
+    white-space:nowrap;
   }
   .nav-brand span{color:var(--brass);}
+  .nav-right{
+    display:flex; align-items:center; gap:18px;
+    flex:1;
+    justify-content:flex-end;
+  }
   .nav-links{
     display:flex; gap:28px;
     list-style:none; margin:0; padding:0;
@@ -82,6 +89,25 @@
   }
   .nav-links a:hover{color:var(--white);}
   .nav-toggle{display:none;}
+
+  .lang-switch{
+    display:flex;
+    border:1px solid rgba(255,255,255,0.28);
+    border-radius:3px;
+    overflow:hidden;
+    flex:0 0 auto;
+  }
+  .lang-btn{
+    background:none;
+    border:none;
+    color:#CBD3DE;
+    font-family:'IBM Plex Sans', 'Noto Sans Devanagari', sans-serif;
+    font-size:0.85rem;
+    padding:7px 14px;
+    cursor:pointer;
+  }
+  .lang-btn + .lang-btn{border-left:1px solid rgba(255,255,255,0.28);}
+  .lang-btn.active{background:var(--brass); color:var(--ink);}
 
   @media (max-width:720px){
     .nav-links{
@@ -114,7 +140,7 @@
     color:var(--brass);
     font-size:0.98rem;
     margin-bottom:18px;
-    font-family:'Spectral', serif;
+    font-family:'Spectral', 'Noto Sans Devanagari', serif;
     font-style:italic;
   }
   .hero h1{
@@ -180,7 +206,7 @@
   /* ---------- SECTION SCAFFOLD ---------- */
   section{padding:88px 0;}
   .section-head{
-    max-width:620px;
+    max-width:640px;
     margin:0 0 48px;
   }
   .section-head h2{
@@ -196,135 +222,7 @@
   .band-paper{background:var(--paper);}
   .band-ink{background:var(--ink); color:var(--paper);}
 
-  /* ---------- MEMBERSHIP CARDS ---------- */
-  .plan-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-  }
-  @media (max-width:720px){ .plan-grid{grid-template-columns:1fr;} }
-  .plan-card{
-    background:var(--paper);
-    padding:40px 36px;
-  }
-  .plan-card .amount{
-    font-family:'Spectral', serif;
-    font-size:2.6rem;
-    color:var(--ink);
-    display:flex;
-    align-items:baseline;
-    gap:6px;
-  }
-  .plan-card .amount small{
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size:0.95rem;
-    color:var(--slate);
-    font-weight:400;
-  }
-  .plan-card h3{
-    font-size:1.1rem;
-    margin-top:6px;
-    color:var(--brass-deep);
-  }
-  .plan-card p{
-    margin-top:14px;
-    color:var(--slate);
-    font-size:0.96rem;
-  }
-  .plan-note{
-    max-width:1080px;
-    margin:0 auto;
-    padding:20px 32px 0;
-    color:var(--slate);
-    font-size:0.92rem;
-    border-top:none;
-  }
-
-  /* ---------- TIMELINE (services & benefits) ---------- */
-  .timeline{
-    position:relative;
-    padding-left:0;
-    margin-top:8px;
-  }
-  .t-track{
-    position:relative;
-    height:3px;
-    background:var(--line);
-    margin:0 0 46px;
-    border-radius:2px;
-  }
-  .t-track .t-fill{
-    position:absolute; left:0; top:0; bottom:0;
-    width:100%;
-    background:var(--brass);
-    border-radius:2px;
-  }
-  .t-points{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
-  }
-  @media (max-width:720px){ .t-points{grid-template-columns:1fr;} }
-  .t-point{position:relative;}
-  .t-point::before{
-    content:"";
-    position:absolute;
-    top:-58px; left:0;
-    width:14px; height:14px;
-    border-radius:50%;
-    background:var(--ink);
-    border:3px solid var(--brass);
-  }
-  .t-point .t-time{
-    font-family:'Spectral', serif;
-    font-style:italic;
-    color:var(--brass-deep);
-    font-size:1rem;
-    margin-bottom:8px;
-    display:block;
-  }
-  .t-point h4{font-size:1.08rem; margin-bottom:8px;}
-  .t-point p{color:var(--slate); font-size:0.95rem;}
-
-  .extra-box{
-    margin-top:56px;
-    border:1px solid var(--line);
-    background:var(--paper);
-  }
-  .extra-head{
-    padding:22px 30px;
-    border-bottom:1px solid var(--line);
-  }
-  .extra-head h3{font-size:1.15rem;}
-  .extra-head p{color:var(--slate); margin-top:6px; font-size:0.94rem;}
-  .extra-cols{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-  @media (max-width:720px){ .extra-cols{grid-template-columns:1fr;} }
-  .extra-col{
-    padding:26px 30px;
-  }
-  .extra-col + .extra-col{border-left:1px solid var(--line);}
-  @media (max-width:720px){ .extra-col + .extra-col{border-left:none; border-top:1px solid var(--line);} }
-  .extra-col .tag{
-    font-family:'Spectral', serif;
-    font-style:italic;
-    color:var(--slate);
-    font-size:0.92rem;
-  }
-  .extra-col .rate{
-    font-family:'Spectral', serif;
-    font-size:2rem;
-    margin-top:6px;
-    color:var(--ink);
-  }
-  .extra-col.warn .rate{color:var(--brass-deep);}
-  .extra-col p.desc{color:var(--slate); font-size:0.92rem; margin-top:8px;}
-
-  /* ---------- RESPONSIBILITIES / CONFIDENTIALITY ---------- */
+  /* ---------- RESPONSIBILITIES / CONFIDENTIALITY / ABOUT LISTS ---------- */
   .two-col{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -355,27 +253,6 @@
     font-size:1.2rem;
   }
   .col-title-sub{color:var(--slate); font-size:0.92rem; margin-top:8px;}
-
-  /* ---------- FEES RECAP ---------- */
-  .fee-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:8px;
-  }
-  .fee-table th, .fee-table td{
-    text-align:left;
-    padding:16px 20px;
-    border-bottom:1px solid var(--line);
-    font-size:0.95rem;
-  }
-  .fee-table th{
-    font-family:'Spectral', serif;
-    font-weight:600;
-    color:var(--slate);
-    font-size:0.88rem;
-    border-bottom:1px solid var(--ink);
-  }
-  .fee-table td.amt{font-family:'Spectral', serif; font-size:1.1rem;}
 
   /* ---------- TERMS ACCORDION ---------- */
   .terms-list{
@@ -433,13 +310,6 @@
     color:var(--paper);
     font-size:1.3rem;
   }
-  .footer-brand p{
-    margin-top:10px;
-    font-style:italic;
-    font-family:'Spectral', serif;
-    color:var(--brass);
-    max-width:320px;
-  }
   .footer-cols{
     display:flex; gap:64px; flex-wrap:wrap;
   }
@@ -471,23 +341,29 @@
 <header class="nav">
   <div class="nav-inner">
     <div class="nav-brand">Horizon <span>Fiduciary</span> Group</div>
-    <button class="nav-toggle" id="navToggle">Menu</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#responsibilities">Responsibilities</a></li>
-      <li><a href="#terms">Full Terms</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-en="About" data-hi="परिचय">About</a></li>
+        <li><a href="#responsibilities" data-en="Responsibilities" data-hi="जिम्मेदारियां">Responsibilities</a></li>
+        <li><a href="#terms" data-en="Full Terms" data-hi="पूर्ण नियम व शर्तें">Full Terms</a></li>
+      </ul>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिंदी</button>
+      </div>
+      <button class="nav-toggle" id="navToggle">Menu</button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-kicker">Fiduciary, trust &amp; wealth management</div>
-    <h1>Securing your future, beyond the horizon.</h1>
-    <p class="lede">Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to registered members, under the membership and withdrawal rules set out below.</p>
+    <div class="hero-kicker" data-en="Fiduciary, trust &amp; wealth management" data-hi="फिडुशियरी, ट्रस्ट और वेल्थ मैनेजमेंट">Fiduciary, trust &amp; wealth management</div>
+    <h1 data-en="Securing your future, beyond the horizon." data-hi="आपके भविष्य को सुरक्षित करना, क्षितिज के पार।">Securing your future, beyond the horizon.</h1>
+    <p class="lede" data-en="Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to registered members, under the membership and withdrawal rules set out below." data-hi="होराइज़न फिडुशियरी ग्रुप अपने पंजीकृत सदस्यों को फिडुशियरी, ट्रस्ट और वेल्थ मैनेजमेंट सेवाएं प्रदान करता है, नीचे दी गई सदस्यता और निकासी नियमों के तहत।">Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to registered members, under the membership and withdrawal rules set out below.</p>
     <div class="hero-ctas">
-      <a href="#about" class="btn btn-primary">Learn more</a>
-      <a href="#terms" class="btn btn-ghost">Read the full terms</a>
+      <a href="#about" class="btn btn-primary" data-en="Learn more" data-hi="अधिक जानें">Learn more</a>
+      <a href="#terms" class="btn btn-ghost" data-en="Read the full terms" data-hi="पूर्ण नियम व शर्तें पढ़ें">Read the full terms</a>
     </div>
   </div>
   <svg class="horizon-graphic" viewBox="0 0 1080 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
@@ -499,14 +375,14 @@
 <section class="band-paper" id="about">
   <div class="wrap">
     <div class="section-head">
-      <h2>About the group</h2>
-      <p>Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to its registered members, under written terms set out in full below.</p>
+      <h2 data-en="About the group" data-hi="समूह के बारे में">About the group</h2>
+      <p data-en="Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to its registered members, under written terms set out in full below." data-hi="होराइज़न फिडुशियरी ग्रुप अपने पंजीकृत सदस्यों को फिडुशियरी, ट्रस्ट और वेल्थ मैनेजमेंट सेवाएं प्रदान करता है, नीचे पूर्ण रूप से दी गई लिखित शर्तों के तहत।">Horizon Fiduciary Group provides fiduciary, trust, and wealth management services to its registered members, under written terms set out in full below.</p>
     </div>
     <ul class="list-plain">
-      <li>Membership is individual — registered per person, and not transferable to anyone else.</li>
-      <li>Member data is kept confidential, and shared only where the law requires it.</li>
-      <li>Terms are set out in writing, and members are notified through official channels before any change takes effect.</li>
-      <li>Governed by the laws of India, with disputes resolved in Gurugram courts.</li>
+      <li data-en="Membership is individual — registered per person, and not transferable to anyone else." data-hi="सदस्यता व्यक्तिगत है — प्रत्येक व्यक्ति के नाम पंजीकृत, और किसी अन्य को हस्तांतरित नहीं की जा सकती।">Membership is individual — registered per person, and not transferable to anyone else.</li>
+      <li data-en="Member data is kept confidential, and shared only where the law requires it." data-hi="सदस्य का डेटा गोपनीय रखा जाता है, और केवल कानून की आवश्यकता होने पर ही साझा किया जाता है।">Member data is kept confidential, and shared only where the law requires it.</li>
+      <li data-en="Terms are set out in writing, and members are notified through official channels before any change takes effect." data-hi="शर्तें लिखित रूप में दी गई हैं, और किसी भी बदलाव के लागू होने से पहले सदस्यों को आधिकारिक माध्यमों से सूचित किया जाता है।">Terms are set out in writing, and members are notified through official channels before any change takes effect.</li>
+      <li data-en="Governed by the laws of India, with disputes resolved in Gurugram courts." data-hi="भारत के कानूनों द्वारा शासित, विवादों का समाधान गुरुग्राम की अदालतों में किया जाता है।">Governed by the laws of India, with disputes resolved in Gurugram courts.</li>
     </ul>
   </div>
 </section>
@@ -515,21 +391,21 @@
   <div class="wrap">
     <div class="two-col">
       <div>
-        <h3 class="col-title">Member responsibilities</h3>
-        <p class="col-title-sub">What we ask of every member.</p>
+        <h3 class="col-title" data-en="Member responsibilities" data-hi="सदस्य की जिम्मेदारियां">Member responsibilities</h3>
+        <p class="col-title-sub" data-en="What we ask of every member." data-hi="हम हर सदस्य से क्या अपेक्षा रखते हैं।">What we ask of every member.</p>
         <ul class="list-plain">
-          <li>Provide accurate and complete information at registration.</li>
-          <li>Pay your monthly membership fee on time.</li>
-          <li>Comply with all applicable laws and regulations.</li>
+          <li data-en="Provide accurate and complete information at registration." data-hi="पंजीकरण के समय सही और पूर्ण जानकारी दें।">Provide accurate and complete information at registration.</li>
+          <li data-en="Pay your monthly membership fee on time." data-hi="अपनी मासिक सदस्यता शुल्क समय पर भुगतान करें।">Pay your monthly membership fee on time.</li>
+          <li data-en="Comply with all applicable laws and regulations." data-hi="सभी लागू कानूनों और नियमों का पालन करें।">Comply with all applicable laws and regulations.</li>
         </ul>
       </div>
       <div>
-        <h3 class="col-title">Confidentiality</h3>
-        <p class="col-title-sub">How we handle your information.</p>
+        <h3 class="col-title" data-en="Confidentiality" data-hi="गोपनीयता">Confidentiality</h3>
+        <p class="col-title-sub" data-en="How we handle your information." data-hi="हम आपकी जानकारी को कैसे संभालते हैं।">How we handle your information.</p>
         <ul class="list-plain">
-          <li>Your member data is kept confidential.</li>
-          <li>Information is shared only where disclosure is required by law.</li>
-          <li>Late payments may result in a pause on membership benefits until resolved.</li>
+          <li data-en="Your member data is kept confidential." data-hi="आपका सदस्य डेटा गोपनीय रखा जाता है।">Your member data is kept confidential.</li>
+          <li data-en="Information is shared only where disclosure is required by law." data-hi="जानकारी केवल तभी साझा की जाती है जब कानून द्वारा इसका खुलासा आवश्यक हो।">Information is shared only where disclosure is required by law.</li>
+          <li data-en="Late payments may result in a pause on membership benefits until resolved." data-hi="देर से भुगतान करने पर समाधान होने तक सदस्यता लाभ रोके जा सकते हैं।">Late payments may result in a pause on membership benefits until resolved.</li>
         </ul>
       </div>
     </div>
@@ -539,103 +415,103 @@
 <section class="band-paper" id="terms">
   <div class="wrap">
     <div class="section-head">
-      <h2>Terms &amp; conditions</h2>
-      <p>The full legal terms governing membership with Horizon Fiduciary Group. Select any section to read it in detail.</p>
+      <h2 data-en="Terms &amp; conditions" data-hi="नियम व शर्तें">Terms &amp; conditions</h2>
+      <p data-en="The full legal terms governing membership with Horizon Fiduciary Group. Select any section to read it in detail." data-hi="होराइज़न फिडुशियरी ग्रुप की सदस्यता को नियंत्रित करने वाली पूर्ण कानूनी शर्तें। विस्तार से पढ़ने के लिए किसी भी अनुभाग का चयन करें।">The full legal terms governing membership with Horizon Fiduciary Group. Select any section to read it in detail.</p>
     </div>
 
     <div class="terms-list">
 
       <details class="term-item" open>
-        <summary><h3>1. Introduction</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="1. Introduction" data-hi="1. परिचय">1. Introduction</h3><span class="plus">+</span></summary>
         <div class="term-body">
-          <p>By joining Horizon Fiduciary Group ("Company"), members agree to the following terms and conditions. These govern membership, services, benefits, and obligations.</p>
+          <p data-en="By joining Horizon Fiduciary Group (&quot;Company&quot;), members agree to the following terms and conditions. These govern membership, services, benefits, and obligations." data-hi="होराइज़न फिडुशियरी ग्रुप (&quot;कंपनी&quot;) से जुड़कर, सदस्य निम्नलिखित नियमों और शर्तों से सहमत होते हैं। ये सदस्यता, सेवाओं, लाभों और दायित्वों को नियंत्रित करते हैं।">By joining Horizon Fiduciary Group ("Company"), members agree to the following terms and conditions. These govern membership, services, benefits, and obligations.</p>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>2. Membership &amp; registration</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="2. Membership &amp; registration" data-hi="2. सदस्यता और पंजीकरण">2. Membership &amp; registration</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>Registration fee: ₹100 per person (one-time, non-refundable).</li>
-            <li>Monthly membership plan: ₹500 per person, payable in advance.</li>
-            <li>Membership is non-transferable and valid only for the registered individual.</li>
+            <li data-en="Registration fee: ₹100 per person (one-time, non-refundable)." data-hi="पंजीकरण शुल्क: ₹100 प्रति व्यक्ति (एक बार, गैर-वापसी योग्य)।">Registration fee: ₹100 per person (one-time, non-refundable).</li>
+            <li data-en="Monthly membership plan: ₹500 per person, payable in advance." data-hi="मासिक सदस्यता योजना: ₹500 प्रति व्यक्ति, अग्रिम भुगतान।">Monthly membership plan: ₹500 per person, payable in advance.</li>
+            <li data-en="Membership is non-transferable and valid only for the registered individual." data-hi="सदस्यता हस्तांतरणीय नहीं है और केवल पंजीकृत व्यक्ति के लिए मान्य है।">Membership is non-transferable and valid only for the registered individual.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>3. Services &amp; member benefits</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="3. Services &amp; member benefits" data-hi="3. सेवाएं और सदस्य लाभ">3. Services &amp; member benefits</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>Members gain access to fiduciary, trust, and wealth management services.</li>
-            <li>Benefits become available after 1 year of continuous membership.</li>
-            <li>Standard withdrawal: members may withdraw up to 50% of their assets after 1 year.</li>
-            <li>Emergency withdrawal: members may withdraw up to 100% of their assets in case of genuine emergencies.</li>
-            <li>Extra withdrawal: members may withdraw more than their available assets, subject to interest charges — no interest in the first month, and a minimum 5% interest on the extra amount after 1 month.</li>
+            <li data-en="Members gain access to fiduciary, trust, and wealth management services." data-hi="सदस्यों को फिडुशियरी, ट्रस्ट और वेल्थ मैनेजमेंट सेवाओं तक पहुंच प्राप्त होती है।">Members gain access to fiduciary, trust, and wealth management services.</li>
+            <li data-en="Benefits become available after 1 year of continuous membership." data-hi="1 वर्ष की निरंतर सदस्यता के बाद लाभ उपलब्ध होते हैं।">Benefits become available after 1 year of continuous membership.</li>
+            <li data-en="Standard withdrawal: members may withdraw up to 50% of their assets after 1 year." data-hi="मानक निकासी: सदस्य 1 वर्ष के बाद अपनी संपत्ति का 50% तक निकाल सकते हैं।">Standard withdrawal: members may withdraw up to 50% of their assets after 1 year.</li>
+            <li data-en="Emergency withdrawal: members may withdraw up to 100% of their assets in case of genuine emergencies." data-hi="आपातकालीन निकासी: वास्तविक आपात स्थिति में सदस्य अपनी संपत्ति का 100% तक निकाल सकते हैं।">Emergency withdrawal: members may withdraw up to 100% of their assets in case of genuine emergencies.</li>
+            <li data-en="Extra withdrawal: members may withdraw more than their available assets, subject to interest charges — no interest in the first month, and a minimum 5% interest on the extra amount after 1 month." data-hi="अतिरिक्त निकासी: सदस्य अपनी उपलब्ध संपत्ति से अधिक राशि निकाल सकते हैं, ब्याज शुल्क के अधीन — पहले महीने में कोई ब्याज नहीं, और 1 महीने के बाद अतिरिक्त राशि पर न्यूनतम 5% ब्याज।">Extra withdrawal: members may withdraw more than their available assets, subject to interest charges — no interest in the first month, and a minimum 5% interest on the extra amount after 1 month.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>4. Member responsibilities</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="4. Member responsibilities" data-hi="4. सदस्य की जिम्मेदारियां">4. Member responsibilities</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>Provide accurate and complete information during registration.</li>
-            <li>Ensure timely payment of monthly membership fees.</li>
-            <li>Comply with all applicable laws and regulations.</li>
+            <li data-en="Provide accurate and complete information during registration." data-hi="पंजीकरण के दौरान सही और पूर्ण जानकारी प्रदान करें।">Provide accurate and complete information during registration.</li>
+            <li data-en="Ensure timely payment of monthly membership fees." data-hi="मासिक सदस्यता शुल्क का समय पर भुगतान सुनिश्चित करें।">Ensure timely payment of monthly membership fees.</li>
+            <li data-en="Comply with all applicable laws and regulations." data-hi="सभी लागू कानूनों और नियमों का पालन करें।">Comply with all applicable laws and regulations.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>5. Confidentiality</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="5. Confidentiality" data-hi="5. गोपनीयता">5. Confidentiality</h3><span class="plus">+</span></summary>
         <div class="term-body">
-          <p>Member data will remain confidential except where disclosure is required by law.</p>
+          <p data-en="Member data will remain confidential except where disclosure is required by law." data-hi="कानून द्वारा खुलासा आवश्यक होने की स्थिति को छोड़कर सदस्य का डेटा गोपनीय रहेगा।">Member data will remain confidential except where disclosure is required by law.</p>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>6. Fees &amp; payments</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="6. Fees &amp; payments" data-hi="6. शुल्क और भुगतान">6. Fees &amp; payments</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>Registration fee: ₹100 (one-time, non-refundable).</li>
-            <li>Monthly membership plan: ₹500, payable in advance each month.</li>
-            <li>Late payments may result in suspension of membership benefits.</li>
+            <li data-en="Registration fee: ₹100 (one-time, non-refundable)." data-hi="पंजीकरण शुल्क: ₹100 (एक बार, गैर-वापसी योग्य)।">Registration fee: ₹100 (one-time, non-refundable).</li>
+            <li data-en="Monthly membership plan: ₹500, payable in advance each month." data-hi="मासिक सदस्यता योजना: ₹500, प्रत्येक माह अग्रिम भुगतान।">Monthly membership plan: ₹500, payable in advance each month.</li>
+            <li data-en="Late payments may result in suspension of membership benefits." data-hi="देर से भुगतान करने पर सदस्यता लाभ निलंबित किए जा सकते हैं।">Late payments may result in suspension of membership benefits.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>7. Limitation of liability</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="7. Limitation of liability" data-hi="7. दायित्व की सीमा">7. Limitation of liability</h3><span class="plus">+</span></summary>
         <div class="term-body">
-          <p>The Company is not liable for losses due to market risks, regulatory changes, or member misrepresentation.</p>
+          <p data-en="The Company is not liable for losses due to market risks, regulatory changes, or member misrepresentation." data-hi="कंपनी बाजार जोखिम, नियामक परिवर्तनों, या सदस्य द्वारा गलत जानकारी के कारण होने वाले नुकसान के लिए उत्तरदायी नहीं है।">The Company is not liable for losses due to market risks, regulatory changes, or member misrepresentation.</p>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>8. Termination</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="8. Termination" data-hi="8. समाप्ति">8. Termination</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>Membership may be terminated by either party with 30 days' written notice.</li>
-            <li>Outstanding fees and obligations must be settled before termination.</li>
+            <li data-en="Membership may be terminated by either party with 30 days' written notice." data-hi="किसी भी पक्ष द्वारा 30 दिनों के लिखित नोटिस के साथ सदस्यता समाप्त की जा सकती है।">Membership may be terminated by either party with 30 days' written notice.</li>
+            <li data-en="Outstanding fees and obligations must be settled before termination." data-hi="समाप्ति से पहले बकाया शुल्क और दायित्वों का निपटान किया जाना चाहिए।">Outstanding fees and obligations must be settled before termination.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>9. Governing law</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="9. Governing law" data-hi="9. शासी कानून">9. Governing law</h3><span class="plus">+</span></summary>
         <div class="term-body">
           <ul>
-            <li>These terms are governed by the laws of India.</li>
-            <li>Disputes will be resolved in Gurugram courts.</li>
+            <li data-en="These terms are governed by the laws of India." data-hi="ये शर्तें भारत के कानूनों द्वारा शासित हैं।">These terms are governed by the laws of India.</li>
+            <li data-en="Disputes will be resolved in Gurugram courts." data-hi="विवादों का समाधान गुरुग्राम की अदालतों में किया जाएगा।">Disputes will be resolved in Gurugram courts.</li>
           </ul>
         </div>
       </details>
 
       <details class="term-item">
-        <summary><h3>10. Amendments</h3><span class="plus">+</span></summary>
+        <summary><h3 data-en="10. Amendments" data-hi="10. संशोधन">10. Amendments</h3><span class="plus">+</span></summary>
         <div class="term-body">
-          <p>The Company reserves the right to amend these terms at any time. Members will be notified of changes through official communication channels.</p>
+          <p data-en="The Company reserves the right to amend these terms at any time. Members will be notified of changes through official communication channels." data-hi="कंपनी को किसी भी समय इन शर्तों में संशोधन करने का अधिकार है। सदस्यों को आधिकारिक संचार माध्यमों के जरिए परिवर्तनों की सूचना दी जाएगी।">The Company reserves the right to amend these terms at any time. Members will be notified of changes through official communication channels.</p>
         </div>
       </details>
 
@@ -651,15 +527,15 @@
       </div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Quick links</h4>
-          <a href="#about">About</a>
-          <a href="#responsibilities">Responsibilities</a>
-          <a href="#terms">Full terms</a>
+          <h4 data-en="Quick links" data-hi="त्वरित लिंक">Quick links</h4>
+          <a href="#about" data-en="About" data-hi="परिचय">About</a>
+          <a href="#responsibilities" data-en="Responsibilities" data-hi="जिम्मेदारियां">Responsibilities</a>
+          <a href="#terms" data-en="Full terms" data-hi="पूर्ण नियम व शर्तें">Full terms</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Horizon Fiduciary Group. All rights reserved.</span>
+      <span data-en="© 2026 Horizon Fiduciary Group. All rights reserved." data-hi="© 2026 होराइज़न फिडुशियरी ग्रुप। सर्वाधिकार सुरक्षित।">© 2026 Horizon Fiduciary Group. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -669,6 +545,16 @@
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'hi' ? el.dataset.hi : el.dataset.en;
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
 </script>
 
 </body>
